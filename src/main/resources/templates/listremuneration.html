@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>WebEncyclop</title>
+</head>
+<body>
+<ul class="nav navbar-nav">
+					<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+				</ul>
+				<h1>Gestion Reunimuration</h1>
+				<a href="new"> Ajouter un Department </a>
+<table border="1">
+ <thead> 
+ <tr> 
+<th>ReunimurationID</th>
+<th>Reunimuration Titre Title</th>
+<th> Actions </th>
+</tr>
+ </thead> 
+
+<tbody>
+<tr th:each="Remuneration : ${listremunerations}">
+<td th:text="${Remuneration.id}"> Reunimuration </td>
+
+<td th:text="${Remuneration.title}"> Department title </td>
+
+<td><a th:href="@{'/edits/' + ${Remuneration.id}}"> Edit </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+<a th:href="@{'/deletes/' + ${Remuneration.id}}"> Supprimer </a>
+ </td>
+</tr>
+</tbody>
+</table>
+				
+				
+</body>
+</html>

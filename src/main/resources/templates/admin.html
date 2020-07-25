@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>WebEncyclop</title>
+</head>
+<body>
+<ul class="nav navbar-nav">
+					<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+				</ul>
+				<h1>Gestion departement</h1>
+				<a href="new"> Ajouter un Department </a>
+<table border="1">
+ <thead> 
+ <tr> 
+<th>DepartementId</th>
+<th>Departement Title</th>
+<th> Departement Description </th>
+<th> Actions </th>
+</tr>
+ </thead> 
+
+<tbody>
+<tr th:each="Departement : ${listdepartements}">
+<td th:text="${Departement.id}"> Department Id </td>
+
+<td th:text="${Departement.title}"> Department title </td>
+
+<td th:text="${Departement.desc}"> Department Description </td>
+
+<td><a th:href="@{'/edit/' + ${Departement.id}}"> Edit </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+<a th:href="@{'/delete/' + ${Departement.id}}"> Supprimer </a>
+ </td>
+</tr>
+</tbody>
+</table>
+				
+				
+</body>
+</html>
